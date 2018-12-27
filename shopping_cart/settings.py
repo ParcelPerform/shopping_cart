@@ -126,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Kafka server ('<host>:<port>')
+KAFKA_SERVER = os.environ['KAFKA_SERVER']
+
+# Warehouse API endpoint ('http://<host>:<port>')
+WAREHOUSE_API_ENDPOINT = os.environ['WAREHOUSE_API_ENDPOINT']
