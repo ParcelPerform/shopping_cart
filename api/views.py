@@ -15,4 +15,16 @@ def create_order(request):
     # tips: request body can be accessed using `request.data`
     # Store order to database
     # Call Warehouse API to send order to warehouse
-    return Response(status=status.HTTP_200_OK, data={"status": "success", "data": {}})
+    data = request.data
+
+    order = Order()
+    order.save()
+    
+    for line in data.get('items', []):
+        item = line.get('name')
+        quantity = line.get('quantity')
+        ol = OrderLine(item=item, quantity=quantity, order=order)
+        ol.save()
+    return Response(status=status.HTTP_200_OK,
+                    data={"status": "success",
+                          "data": request.data})

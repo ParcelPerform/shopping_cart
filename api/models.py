@@ -21,9 +21,6 @@ class Order(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
 
-
-
-
 class OrderLine(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.CharField(max_length=500)
