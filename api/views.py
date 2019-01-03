@@ -25,6 +25,10 @@ def create_order(request):
         quantity = line.get('quantity')
         ol = OrderLine(item=item, quantity=quantity, order=order)
         ol.save()
+
+    # Challenge #2, linking one BE service to another
+    requests.post('http://warehouse_api:5000/create-order/') 
+
     return Response(status=status.HTTP_200_OK,
                     data={"status": "success",
                           "data": request.data})
