@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,3 +134,6 @@ KAFKA_SERVER = os.environ['KAFKA_SERVER']
 
 # Warehouse API endpoint ('http://<host>:<port>')
 WAREHOUSE_API_ENDPOINT = os.environ['WAREHOUSE_API_ENDPOINT']
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
